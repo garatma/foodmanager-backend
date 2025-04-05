@@ -13,7 +13,7 @@ import {
   recipeResolver
 } from './recipe.schema'
 
-export const recipePath = 'recipe'
+export const recipePath = '/api/recipe'
 export const recipeMethods: Array<keyof RecipeService> = ['find', 'get', 'create', 'patch', 'remove']
 
 export * from './recipe.class'
