@@ -1,0 +1,5 @@
+.git
+lib
+migrations
+node_modules
+test
