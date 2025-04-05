@@ -6,6 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.increments('id').primary().notNullable()
     table.integer('recipeId').references('id').inTable('recipe').notNullable()
     table.integer('ingredientId').references('id').inTable('ingredient').notNullable()
+    table.integer('quantity').notNullable()
     table.enum('unit', ['ml', 'g', 'un']).notNullable()
     table.string('description').nullable()
   })
