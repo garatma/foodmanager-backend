@@ -3,8 +3,8 @@ import type { Knex } from 'knex'
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('recipe', table => {
-    table.increments('id').notNullable().primary()
-    table.string('name').notNullable()
+    table.increments('id').primary().notNullable()
+    table.string('name').unique().notNullable()
     table.string('description').nullable()
     table.string('sourceURL').nullable()
     table.string('pictureURL').nullable()
