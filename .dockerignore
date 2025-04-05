@@ -3,3 +3,4 @@ lib
 migrations
 node_modules
 test
+db

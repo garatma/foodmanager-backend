@@ -4,6 +4,6 @@ services:
     container_name: foodmanager_backend
     restart: unless-stopped
     ports:
-      - '3030:3030'
+      - '3031:3030'
     volumes:
-      - './foodmanager-backend.sqlite:/app/foodmanager-backend.sqlite'
+      - './db:/app/db'
