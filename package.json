@@ -54,6 +54,7 @@
     "@feathersjs/schema": "^5.0.33",
     "@feathersjs/transport-commons": "^5.0.33",
     "@feathersjs/typebox": "^5.0.33",
+    "dotenv": "^16.5.0",
     "knex": "^3.1.0",
     "pg": "^8.14.1",
     "winston": "^3.17.0"

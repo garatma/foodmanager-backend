@@ -1,8 +1,11 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/application.html
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
 import configuration from '@feathersjs/configuration'
 import { feathers } from '@feathersjs/feathers'
 import { bodyParser, cors, errorHandler, koa, parseAuthentication, rest, serveStatic } from '@feathersjs/koa'
-
 import { configurationValidator } from './configuration'
 import type { Application } from './declarations'
 import { logError } from './hooks/log-error'
