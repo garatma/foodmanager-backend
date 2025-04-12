@@ -11,7 +11,8 @@
       "type": "node-terminal",
       "env": {
         "NODE_ENV": "development"
-      }
+      },
+      "envFile": "${workspaceFolder}/.env"
     },
   ]
 }

@@ -6,5 +6,10 @@
   "host": "HOSTNAME",
   "authentication": {
     "secret": "FEATHERS_SECRET"
+  },
+  "postgresql": {
+    "connection": {
+      "password": "POSTGRESQL_PASSWORD"
+    }
   }
 }
