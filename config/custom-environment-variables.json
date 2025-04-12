@@ -9,7 +9,7 @@
   },
   "postgresql": {
     "connection": {
-      "password": "POSTGRESQL_PASSWORD"
+      "password": "POSTGRES_PASSWORD"
     }
   }
 }
