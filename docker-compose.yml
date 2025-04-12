@@ -3,6 +3,7 @@ services:
     build: .
     container_name: foodmanager_backend
     restart: unless-stopped
+    env_file: "./.env"
     ports:
       - '3031:3030'
     networks:
