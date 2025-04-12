@@ -5,5 +5,23 @@ services:
     restart: unless-stopped
     ports:
       - '3031:3030'
+    networks:
+      - foodmanager
+
+  foodmanager_postgres:
+    image: postgres:17.4-alpine3.21
+    container_name: foodmanager_postgres
+    restart: unless-stopped
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
     volumes:
-      - './db:/app/db'
+      - ./data:/var/lib/postgresql/data:z
+    networks:
+      - foodmanager
+
+networks:
+  foodmanager:
+    name: foodmanager

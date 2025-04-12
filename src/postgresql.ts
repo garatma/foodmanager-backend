@@ -1,17 +1,17 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/databases.html
-import knex from 'knex'
 import type { Knex } from 'knex'
+import knex from 'knex'
 import type { Application } from './declarations'
 
 declare module './declarations' {
   interface Configuration {
-    sqliteClient: Knex
+    postgresqlClient: Knex
   }
 }
 
-export const sqlite = (app: Application) => {
-  const config = app.get('sqlite')
+export const postgresql = (app: Application) => {
+  const config = app.get('postgresql')
   const db = knex(config!)
 
-  app.set('sqliteClient', db)
+  app.set('postgresqlClient', db)
 }

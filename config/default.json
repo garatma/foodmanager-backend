@@ -9,9 +9,8 @@
     "default": 10,
     "max": 50
   },
-  "sqlite": {
-    "client": "sqlite3",
-    "connection": "./db/foodmanager-backend.sqlite",
-    "useNullAsDefault": true
+  "postgresql": {
+    "client": "pg",
+    "connection": "postgres://postgres:@rpi.local:5432/foodmanager"
   }
 }

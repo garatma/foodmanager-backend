@@ -20,7 +20,7 @@ export class RecipeService<ServiceParams extends Params = RecipeParams> extends 
 export const getOptions = (app: Application): KnexAdapterOptions => {
   return {
     paginate: app.get('paginate'),
-    Model: app.get('sqliteClient'),
+    Model: app.get('postgresqlClient'),
     name: 'recipe',
     multi: ['create', 'patch']
   }

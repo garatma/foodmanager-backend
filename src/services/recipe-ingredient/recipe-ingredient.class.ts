@@ -27,8 +27,8 @@ export class RecipeIngredientService<
 export const getOptions = (app: Application): KnexAdapterOptions => {
   return {
     paginate: app.get('paginate'),
-    Model: app.get('sqliteClient'),
-    name: 'recipe-ingredient',
+    Model: app.get('postgresqlClient'),
+    name: 'recipe_ingredient',
     multi: ['create', 'patch']
   }
 }

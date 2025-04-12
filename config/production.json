@@ -1,0 +1,5 @@
+{
+  "postgresql": {
+    "connection": "postgres://postgres:@foodmanager_postgres:5432/foodmanager"
+  }
+}
