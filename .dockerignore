@@ -1,6 +1,15 @@
+.dockerignore
+.env
 .git
-lib
+.gitignore
+.prettierrc
+.vscode
+data
+deploy.sh
+docker-compose.yml
+docs
 migrations
 node_modules
+readme.md
 test
-db
+tsconfig.json
