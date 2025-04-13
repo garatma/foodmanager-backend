@@ -23,7 +23,7 @@ export const recipeSchema = Type.Object(
     name: Type.String(),
     description: Type.Optional(Type.String()),
     sourceURL: Type.Optional(Type.String({ format: 'uri' })),
-    pictureURL: Type.Optional(Type.String({ format: 'uri' })),
+    picture: Type.Optional(Type.String({ format: 'uri' })),
     rating: Type.Optional(Type.Integer({ minimum: 0, maximum: 5 })),
     steps: Type.Optional(Type.String()),
     ingredients: Type.Array(ingredientSchema)

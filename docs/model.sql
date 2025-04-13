@@ -12,7 +12,7 @@ CREATE TABLE public.recipe (
   "name" varchar(255) NOT NULL,
   description varchar(255) NULL,
   "sourceURL" varchar(255) NULL,
-  "pictureURL" varchar(255) NULL,
+  picture varchar NULL,
   rating int4 NULL,
   steps varchar(255) NULL,
   CONSTRAINT recipe_name_unique UNIQUE (name),
