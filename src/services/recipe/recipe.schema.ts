@@ -4,7 +4,7 @@ import type { Static } from '@feathersjs/typebox'
 import { Type, getValidator, querySyntax } from '@feathersjs/typebox'
 import type { HookContext } from '../../declarations'
 import { dataValidator, queryValidator } from '../../validators'
-import { unitSchema } from '../recipe-ingredient/recipe-ingredient.schema'
+import { unitSchema } from '../ingredient/ingredient.schema'
 import type { RecipeService } from './recipe.class'
 
 const ingredientSchema = Type.Object({
@@ -35,29 +35,18 @@ export const recipeValidator = getValidator(recipeSchema, dataValidator)
 export const recipeResolver = resolve<Recipe, HookContext<RecipeService>>({
   ingredients: virtual(async (recipe, context) => {
     // Populate the user associated via `userId`
-    const recipeIngredients = await context.app.service('/api/recipe-ingredient').find({
+    const ingredients = await context.app.service('/api/ingredient').find({
       query: { recipeId: recipe.id }
     })
 
-    const ingredientIds = [...new Set(recipeIngredients.data.map(ri => ri.ingredientId))]
-
-    const ingredients = await context.app.service('/api/ingredient').find({
-      query: { id: { $in: ingredientIds } }
-    })
-
-    const ingredientsWithRi: Ingredient[] = recipeIngredients.data.map(ri => {
-      // we can cast it to the type because we know it exists
-      const ingredient = ingredients.data.find(i => ri.ingredientId === i.id)!
+    const ingredientsNoRecipeId: Ingredient[] = ingredients.data.map(i => {
       return {
-        id: ingredient.id,
-        name: ingredient.name,
-        quantity: ri.quantity,
-        unit: ri.unit,
-        description: ri.description
+        ...i,
+        recipeId: undefined
       }
     })
 
-    return ingredientsWithRi
+    return ingredientsNoRecipeId
   })
 })
 

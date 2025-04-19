@@ -6,11 +6,17 @@ import type { HookContext } from '../../declarations'
 import { dataValidator, queryValidator } from '../../validators'
 import type { IngredientService } from './ingredient.class'
 
+export const unitSchema = Type.Union([Type.Literal('ml'), Type.Literal('g'), Type.Literal('un')])
+
 // Main data model schema
 export const ingredientSchema = Type.Object(
   {
     id: Type.Number(),
-    name: Type.String()
+    name: Type.String(),
+    recipeId: Type.Number(),
+    quantity: Type.Number(),
+    unit: unitSchema,
+    description: Type.Optional(Type.String())
   },
   { $id: 'Ingredient', additionalProperties: false }
 )
