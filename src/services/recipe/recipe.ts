@@ -1,6 +1,8 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/service.html
+import { transaction } from '@feathersjs/knex'
 import { hooks as schemaHooks } from '@feathersjs/schema'
 import type { Application } from '../../declarations'
+import { deleteRecipeIngredients } from './hooks/delete-recipe-ingredients'
 import { RecipeService, getOptions } from './recipe.class'
 import {
   recipeDataResolver,
@@ -39,13 +41,15 @@ export const recipe = (app: Application) => {
       get: [],
       create: [schemaHooks.validateData(recipeDataValidator), schemaHooks.resolveData(recipeDataResolver)],
       patch: [schemaHooks.validateData(recipePatchValidator), schemaHooks.resolveData(recipePatchResolver)],
-      remove: []
+      remove: [transaction.start(), deleteRecipeIngredients]
     },
     after: {
-      all: []
+      all: [],
+      remove: [transaction.end()]
     },
     error: {
-      all: []
+      all: [],
+      remove: [transaction.rollback()]
     }
   })
 }
