@@ -3,6 +3,7 @@ import { resolve, virtual } from '@feathersjs/schema'
 import type { Static } from '@feathersjs/typebox'
 import { Type, getValidator, querySyntax } from '@feathersjs/typebox'
 import type { HookContext } from '../../declarations'
+import { Nullable } from '../../utils/nullable'
 import { dataValidator, queryValidator } from '../../validators'
 import { unitSchema } from '../ingredient/ingredient.schema'
 import type { RecipeService } from './recipe.class'
@@ -12,7 +13,7 @@ const ingredientSchema = Type.Object({
   name: Type.String(),
   quantity: Type.Number(),
   unit: unitSchema,
-  description: Type.Optional(Type.String())
+  description: Nullable(Type.String())
 })
 type Ingredient = Static<typeof ingredientSchema>
 
@@ -21,11 +22,11 @@ export const recipeSchema = Type.Object(
   {
     id: Type.Number(),
     name: Type.String(),
-    description: Type.Optional(Type.String()),
-    sourceURL: Type.Optional(Type.String({ format: 'uri' })),
-    picture: Type.Optional(Type.String({ format: 'uri' })),
-    rating: Type.Optional(Type.Integer({ minimum: 0, maximum: 5 })),
-    steps: Type.Optional(Type.String()),
+    description: Nullable(Type.String()),
+    sourceURL: Nullable(Type.String({ format: 'uri' })),
+    picture: Nullable(Type.String({ format: 'uri' })),
+    rating: Nullable(Type.Integer({ minimum: 0, maximum: 5 })),
+    steps: Nullable(Type.String()),
     ingredients: Type.Array(ingredientSchema)
   },
   { $id: 'Recipe', additionalProperties: false }

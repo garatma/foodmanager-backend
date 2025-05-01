@@ -3,6 +3,7 @@ import { resolve } from '@feathersjs/schema'
 import type { Static } from '@feathersjs/typebox'
 import { Type, getValidator, querySyntax } from '@feathersjs/typebox'
 import type { HookContext } from '../../declarations'
+import { Nullable } from '../../utils/nullable'
 import { dataValidator, queryValidator } from '../../validators'
 import type { IngredientService } from './ingredient.class'
 
@@ -16,7 +17,7 @@ export const ingredientSchema = Type.Object(
     recipeId: Type.Number(),
     quantity: Type.Number(),
     unit: unitSchema,
-    description: Type.Optional(Type.String())
+    description: Nullable(Type.String())
   },
   { $id: 'Ingredient', additionalProperties: false }
 )
